@@ -22,8 +22,9 @@
 			});
 		},
 		onAfterViewLoad: function(view) {
-			$('.page-header h3').text(this.getTitle());
-			$('.btn-group button').removeClass('active');
+			// set the title of the the calendar here 
+			$('.page-header h4').text(this.getTitle());
+			$('.button-group button').removeClass('active');
 			$('button[data-calendar-view="' + view + '"]').addClass('active');
 		},
 		classes: {
@@ -35,20 +36,21 @@
 
 	var calendar = $('#calendar').calendar(options);
 
-	$('.btn-group button[data-calendar-nav]').each(function() {
+	$('.button-group button[data-calendar-nav]').each(function() {
 		var $this = $(this);
 		$this.click(function() {
 			calendar.navigate($this.data('calendar-nav'));
 		});
 	});
 
-	$('.btn-group button[data-calendar-view]').each(function() {
+	$('.button-group button[data-calendar-view]').each(function() {
 		var $this = $(this);
 		$this.click(function() {
 			calendar.view($this.data('calendar-view'));
 		});
 	});
 
+	// from here down set additional options via checkbox ====================================================
 	$('#first_day').change(function(){
 		var value = $(this).val();
 		value = value.length ? parseInt(value) : null;
@@ -84,4 +86,6 @@
 		//e.preventDefault();
 		//e.stopPropagation();
 	});
+
+	// ========= End additional options =============================================
 }(jQuery));

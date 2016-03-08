@@ -6,6 +6,7 @@
  * User: Sergey Romanov <serg4172@mail.ru>
  */
 "use strict";
+$(document).foundation();
 
 Date.prototype.getWeek = function(iso8601) {
 	if (iso8601) {
@@ -988,7 +989,8 @@ if(!String.prototype.formatNum) {
 	Calendar.prototype._update = function() {
 		var self = this;
 
-		$('*[data-toggle="tooltip"]').tooltip({container: 'body'});
+		//$('*[data-toggle="tooltip"]').tooltip({container: 'body'});
+
 
 		$('*[data-cal-date]').click(function() {
 			var view = $(this).data('cal-view');
@@ -1146,7 +1148,7 @@ if(!String.prototype.formatNum) {
 		var activecell = 0;
 		var downbox = $(document.createElement('div')).attr('id', 'cal-day-tick').html('<i class="icon-chevron-down glyphicon glyphicon-chevron-down"></i>');
 
-		self.context.find('.cal-month-day, .cal-year-box .span3')
+		self.context.find('.cal-month-day, .cal-year-box .large-3')
 			.on('mouseenter', function() {
 				if($('.events-list', this).length == 0) {
 					return;
@@ -1199,13 +1201,13 @@ if(!String.prototype.formatNum) {
 	function showEventsList(event, that, slider, self) {
 
 		event.stopPropagation();
-
+		// console.log('help a day has been clicked!!!', that, slider, self, event);
 		var that = $(that);
 		var cell = that.closest('.cal-cell');
 		var row = cell.closest('.cal-before-eventlist');
 		var tick_position = cell.data('cal-row');
 
-		that.fadeOut('fast');
+		that.fadeOut('slow');
 
 		slider.slideUp('fast', function() {
 			var event_list = $('.events-list', cell);
