@@ -8,6 +8,7 @@
 		tmpl_path: 'tmpls/',
 		tmpl_cache: false,
 		day: '2013-03-12',
+		format12: true,
 		onAfterEventsLoad: function(events) {
 			if(!events) {
 				return;
